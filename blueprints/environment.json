@@ -1,0 +1,48 @@
+{
+    "identifier": "environment",
+    "description": "This blueprint represents an environment in our software catalog",
+    "title": "Environment",
+    "icon": "Environment",
+    "schema": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Environment type",
+          "enum": ["Integration", "Production", "Staging", "Security", "QA"]
+        },
+        "cloud-provider": {
+          "type": "string",
+          "title": "Cloud Provider",
+          "enum": ["AWS", "GCP", "Azure", "Oracle"],
+          "enumColors": {
+            "AWS": "orange",
+            "GCP": "green",
+            "Azure": "blue",
+            "Oracle": "red"
+          }
+        },
+        "region": {
+          "type": "string",
+          "title": "Region",
+          "enum": [
+            "eu-west-1",
+            "eu-west-2",
+            "us-west-1",
+            "us-east-1",
+            "us-east-2"
+          ]
+        }
+      },
+      "required": ["type"]
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {
+      "grafanaUrl": {
+        "title": "Grafana URL",
+        "calculation": "'https://grafana.com/' + .identifier",
+        "type": "string"
+      }
+    },
+    "relations": {}
+  }
+  

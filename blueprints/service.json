@@ -1,0 +1,132 @@
+{
+    "identifier": "microservice",
+    "description": "This blueprint represents service in our software catalog",
+    "title": "Service",
+    "icon": "Microservice",
+    "schema": {
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "Github URL",
+          "icon": "Github",
+          "format": "url",
+          "default": "https://git.com",
+          "description": "the link to the repo in our github"
+        },
+        "on-call": {
+          "type": "string",
+          "icon": "Okta",
+          "title": "On Call",
+          "format": "email",
+          "default": "developer@getport.io"
+        },
+        "language": {
+          "type": "string",
+          "icon": "Git",
+          "title": "Language",
+          "default": "Node",
+          "enum": [
+            "GO",
+            "Python",
+            "Node"
+          ],
+          "enumColors": {
+            "GO": "red",
+            "Python": "green",
+            "Node": "blue"
+          }
+        },
+        "number-of-open-jira-issues": {
+          "type": "number",
+          "icon": "DevopsTool",
+          "title": "Number of JIRA Issues",
+          "default": 42
+        },
+        "product": {
+          "title": "Product",
+          "type": "string",
+          "icon": "Deployment",
+          "default": "Analytics",
+          "enum": [
+            "SaaS",
+            "Control Panel",
+            "Analytics"
+          ],
+          "description": "Choose product unit related to the service"
+        },
+        "config": {
+          "title": "Service Config",
+          "type": "object",
+          "icon": "Argo",
+          "default": {
+            "foo": "bar"
+          }
+        },
+        "monitor-links": {
+          "title": "Monitor Tooling",
+          "type": "array",
+          "icon": "Datadog",
+          "items": {
+            "type": "string",
+            "format": "url"
+          },
+          "default": [
+            "https://grafana.com",
+            "https://prometheus.com",
+            "https://datadog.com"
+          ]
+        },
+        "last-incident": {
+          "icon": "CPU",
+          "type": "string",
+          "title": "Last Incident",
+          "format": "date-time",
+          "default": "2022-04-18T11:44:15.345Z"
+        },
+        "version": {
+          "type": "string",
+          "icon": "Package",
+          "title": "Latest Version",
+          "pattern": "[a-zA-Z0-9.]",
+          "description": "A property that supports values specified by a regex pattern",
+          "default": "Port1337"
+        },
+        "ip": {
+          "title": "IPv4 Property",
+          "icon": "Cluster",
+          "type": "string",
+          "format": "ipv4",
+          "description": "An IPv4 property",
+          "default": "127.0.0.1"
+        }
+      },
+      "required": [
+        "on-call"
+      ]
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {
+      "slack-notifications": {
+        "title": "Slack Notifications",
+        "icon": "Link",
+        "calculation": "'https://slack.com/' + .identifier",
+        "type": "string",
+        "format": "url"
+      },
+      "latest-build-output": {
+        "title": "Latest Build Output",
+        "icon": "Jenkins",
+        "calculation": ".properties.url + '/' + .properties.version",
+        "type": "string",
+        "format": "url"
+      },
+      "launch-darkly": {
+        "title": "Launch Darkly",
+        "calculation": "'https://launchdarkly.com/' + .title",
+        "type": "string",
+        "format": "url"
+      }
+    },
+    "relations": {}
+  }
+  

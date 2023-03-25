@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "type": "Production",
+    "cloud-provider": "AWS",
+    "region": "eu-west-1"
+  },
+  "relations": {},
+  "title": "Production",
+  "identifier": "production"
+}
