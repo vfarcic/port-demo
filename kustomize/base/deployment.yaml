@@ -4,8 +4,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: silly-demo
+  annotations:
+    onCall: "viktor@farcic.com"
   labels:
     app.kubernetes.io/name: silly-demo
+    type: backend
+    gitHubOrg: vfarcic
+    gitHubRepo: port-demo
+    language: Go
 spec:
   selector:
     matchLabels:

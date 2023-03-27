@@ -10,17 +10,6 @@ resources:
             blueprint: '"cluster"'
   - kind: v1/namespaces
     selector:
-      query: .metadata.name | startswith("environment")
-    port:
-      entity:
-        mappings:
-          - identifier: .metadata.name + "-" + "dot"
-            title: .metadata.labels.environment
-            blueprint: '"environment"'
-            relations:
-              cluster: '"dot"'
-  - kind: v1/namespaces
-    selector:
       query: .metadata.name | startswith("kube") | not
     port:
       entity:
@@ -33,26 +22,6 @@ resources:
               labels: .metadata.labels
             relations:
               Cluster: '"dot"'
-  - kind: apps/v1/deployments
-    selector:
-      query: .metadata.labels.type == "backend"
-    port:
-      entity:
-        mappings:
-          - identifier: .metadata.name + "-Deployment-" + .metadata.namespace + "-" + "dot"
-            title: .metadata.name
-            icon: '"Deployment"'
-            blueprint: '"backend-app"'
-            properties:
-              availableReplicas: .status.availableReplicas
-              labels: .metadata.labels
-              containers: (.spec.template.spec.containers | map({image}))
-              isHealthy: if .spec.replicas == .status.availableReplicas then "Healthy" else "Unhealthy" end
-              url: '"https://github.com/" + .metadata.labels.gitHubOrg + "/" + .metadata.labels.gitHubRepo'
-              language: .metadata.labels.language
-              on-call: .metadata.annotations.onCall
-            relations:
-              environment: .metadata.namespace + "-" + "dot"
   - kind: v1/nodes
     port:
       entity:
