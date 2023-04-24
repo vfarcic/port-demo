@@ -1,0 +1,126 @@
+[
+  {
+    "identifier": "create-backend",
+    "title": "Create Backend App",
+    "userInputs": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "default": ""
+        },
+        "repo-user": {
+          "type": "string",
+          "title": "Repo User",
+          "default": "vfarcic"
+        },
+        "repo-name": {
+          "type": "string",
+          "title": "Repo Name",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "title": "Type",
+          "default": "backend"
+        },
+        "environment": {
+          "type": "string",
+          "title": "Environment",
+          "enum": ["production", "staging", "development"],
+          "default": "production"
+        },
+        "port": {
+          "type": "number",
+          "title": "Port",
+          "default": 8080
+        },
+        "host": {
+          "type": "string",
+          "title": "Host",
+          "default": "my-app.acme.com"
+        },
+        "has-db": {
+          "type": "string",
+          "title": "Has DB?",
+          "default": "false"
+        }
+      },
+      "required": ["name", "repo-user", "repo-name", "type", "environment", "port", "has-db"]
+    },
+    "invocationMethod": {
+      "type": "WEBHOOK",
+      "url": "https://example.com"
+    },
+    "trigger": "CREATE",
+    "description": "Create a new backend application."
+  },
+  {
+    "identifier": "create-backend-db",
+    "title": "Create Backend App With DB",
+    "userInputs": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "default": ""
+        },
+        "repo-user": {
+          "type": "string",
+          "title": "Repo User",
+          "default": "vfarcic"
+        },
+        "repo-name": {
+          "type": "string",
+          "title": "Repo Name",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "title": "Type",
+          "default": "backend"
+        },
+        "environment": {
+          "type": "string",
+          "title": "Environment",
+          "enum": ["production", "staging", "development"],
+          "default": "production"
+        },
+        "port": {
+          "type": "number",
+          "title": "Port",
+          "default": 8080
+        },
+        "host": {
+          "type": "string",
+          "title": "Host",
+          "default": "my-app.acme.com"
+        },
+        "has-db": {
+          "type": "string",
+          "title": "Has DB?",
+          "default": "true"
+        },
+        "db-version": {
+          "type": "number",
+          "title": "DB Version",
+          "default": 13
+        },
+        "db-size": {
+          "type": "string",
+          "title": "DB Size",
+          "enum": ["small", "medium", "large"],
+          "default": "small"
+        }
+      },
+      "required": ["name", "repo-user", "repo-name", "type", "environment", "port", "has-db"]
+    },
+    "invocationMethod": {
+      "type": "WEBHOOK",
+      "url": "https://example.com"
+    },
+    "trigger": "CREATE",
+    "description": "Create a new backend application with a DB."
+  }
+]
+  
